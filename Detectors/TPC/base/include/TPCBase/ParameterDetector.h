@@ -33,6 +33,7 @@ struct ParameterDetector : public o2::conf::ConfigurableParamHelper<ParameterDet
   TimeBin TmaxTriggered = 550;   ///< Maximum time bin in case of triggered readout mode
   float DriftTimeOffset = 7.3;   ///< drift time offset in time bins (we observe ~2.4\mus before October 2023 and ~1.45 \mus after)
   bool ExcludeFCGap = true;      ///< exclude electrons created in the gap between the IFC vessel and OFC vessel and FC strips
+  bool UseGeant4Edep = false;    ///< use Geant4 energy deposit directly for ionisation (for Kr-83m calibration runs)
 
   O2ParamDef(ParameterDetector, "TPCDetParam");
 };
