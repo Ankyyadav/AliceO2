@@ -3258,11 +3258,12 @@ void Detector::SetSpecialPhysicsCuts()
   LOG(info) << "TPC SetSpecialPhysicsCuts: UseGeant4Edep=" << detParam.UseGeant4Edep;
   if (detParam.UseGeant4Edep) {
     auto& matmgr = o2::base::MaterialManager::Instance();
+    const float specialCut = detParam.SpecialCutsGeV;
     for (int med : {(int)kDriftGas1, (int)kDriftGas2, (int)kCO2}) {
-      matmgr.SpecialCut(GetName(), med, o2::base::ECut::kCUTELE, 1e-6f);
-      matmgr.SpecialCut(GetName(), med, o2::base::ECut::kCUTGAM, 1e-6f);
-      matmgr.SpecialCut(GetName(), med, o2::base::ECut::kDCUTE,  1e-6f);
-      matmgr.SpecialCut(GetName(), med, o2::base::ECut::kBCUTE,  1e-6f);
+      matmgr.SpecialCut(GetName(), med, o2::base::ECut::kCUTELE, specialCut);
+      matmgr.SpecialCut(GetName(), med, o2::base::ECut::kCUTGAM, specialCut);
+      matmgr.SpecialCut(GetName(), med, o2::base::ECut::kDCUTE,  specialCut);
+      matmgr.SpecialCut(GetName(), med, o2::base::ECut::kBCUTE,  specialCut);
     }
   }
   o2::base::Detector::SetSpecialPhysicsCuts();

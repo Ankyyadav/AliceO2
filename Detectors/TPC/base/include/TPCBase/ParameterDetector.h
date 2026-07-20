@@ -34,6 +34,7 @@ struct ParameterDetector : public o2::conf::ConfigurableParamHelper<ParameterDet
   float DriftTimeOffset = 7.3;   ///< drift time offset in time bins (we observe ~2.4\mus before October 2023 and ~1.45 \mus after)
   bool ExcludeFCGap = true;      ///< exclude electrons created in the gap between the IFC vessel and OFC vessel and FC strips
   bool UseGeant4Edep = false;    ///< use Geant4 energy deposit directly for ionisation (for Kr-83m calibration runs)
+  float SpecialCutsGeV = 1e-6f;  ///< CUTELE/CUTGAM/DCUTE/BCUTE applied to TPC drift-gas media by SetSpecialPhysicsCuts() when UseGeant4Edep is set (Kr-83m calibration isolation test); default 1e-6 GeV (1 keV) matches the prior hardcoded value
 
   O2ParamDef(ParameterDetector, "TPCDetParam");
 };
