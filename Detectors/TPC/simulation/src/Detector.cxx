@@ -3262,8 +3262,8 @@ void Detector::SetSpecialPhysicsCuts()
     for (int med : {(int)kDriftGas1, (int)kDriftGas2, (int)kCO2}) {
       matmgr.SpecialCut(GetName(), med, o2::base::ECut::kCUTELE, specialCut);
       matmgr.SpecialCut(GetName(), med, o2::base::ECut::kCUTGAM, specialCut);
-      matmgr.SpecialCut(GetName(), med, o2::base::ECut::kDCUTE,  specialCut);
-      matmgr.SpecialCut(GetName(), med, o2::base::ECut::kBCUTE,  specialCut);
+      matmgr.SpecialCut(GetName(), med, o2::base::ECut::kDCUTE, specialCut);
+      matmgr.SpecialCut(GetName(), med, o2::base::ECut::kBCUTE, specialCut);
     }
   }
   o2::base::Detector::SetSpecialPhysicsCuts();
