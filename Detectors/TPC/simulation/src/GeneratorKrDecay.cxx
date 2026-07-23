@@ -52,11 +52,11 @@ namespace tpc
 // Parse $G4LEVELGAMMADATA/z36.a83.
 // Returns true and fills five values (energies in keV) on success.
 static bool parseG4PhotonEvap(const char* path,
-                               double& E_T1,     // T1 gamma energy [keV]
-                               double& ICC_T1,   // T1 ICC_total
-                               double& Kfrac_T1, // T1 K-shell fraction of ICC
-                               double& E_T2,     // T2 gamma energy [keV]
-                               double& ICC_T2)   // T2 ICC_total
+                              double& E_T1,     // T1 gamma energy [keV]
+                              double& ICC_T1,   // T1 ICC_total
+                              double& Kfrac_T1, // T1 K-shell fraction of ICC
+                              double& E_T2,     // T2 gamma energy [keV]
+                              double& ICC_T2)   // T2 ICC_total
 {
   std::ifstream f(path);
   if (!f.is_open()) {
@@ -179,18 +179,18 @@ KrDecayTable::KrDecayTable()
   }
 
   // ── Derived probabilities ─────────────────────────────────────────────
-  const double P_T1_g = 1.0 / (1.0 + ICC_T1);                    // T1 gamma
-  const double P_T1_K_IC = Kfrac_T1 * ICC_T1 / (1.0 + ICC_T1);   // T1 K-shell IC
-  const double P_T1_out = ICC_T1 / (1.0 + ICC_T1) - P_T1_K_IC;   // T1 outer-shell IC
-  const double P_T2_g = 1.0 / (1.0 + ICC_T2);                    // T2 gamma
-  const double P_T2_IC = ICC_T2 / (1.0 + ICC_T2);                // T2 IC
+  const double P_T1_g = 1.0 / (1.0 + ICC_T1);                  // T1 gamma
+  const double P_T1_K_IC = Kfrac_T1 * ICC_T1 / (1.0 + ICC_T1); // T1 K-shell IC
+  const double P_T1_out = ICC_T1 / (1.0 + ICC_T1) - P_T1_K_IC; // T1 outer-shell IC
+  const double P_T2_g = 1.0 / (1.0 + ICC_T2);                  // T2 gamma
+  const double P_T2_IC = ICC_T2 / (1.0 + ICC_T2);              // T2 IC
 
-  const double P_T1_Kf = P_T1_K_IC * kKfluY;        // T1 K-IC → K-fluorescence
+  const double P_T1_Kf = P_T1_K_IC * kKfluY;         // T1 K-IC → K-fluorescence
   const double P_T1_Ka = P_T1_K_IC * (1.0 - kKfluY); // T1 K-IC → K-Auger
 
   // ── Particle kinetic energies ─────────────────────────────────────────
-  const double E_L_CE_T1 = E_T1 - kL1bind; // T1 L1-shell CE
-  const double E_K_CE = E_T1 - kKbind;     // T1 K-shell CE
+  const double E_L_CE_T1 = E_T1 - kL1bind;     // T1 L1-shell CE
+  const double E_K_CE = E_T1 - kKbind;         // T1 K-shell CE
   const double E_KLL = kKbind - 2.0 * kL1bind; // KLL Auger
   const double E_res_aug = kKbind - E_KLL;     // residual Auger (K-Auger path)
   const double E_Laug_Kf = kKbind - kKalpha;   // L-Auger after Kα emission
