@@ -56,7 +56,7 @@ class KrDecayTable
   // Parse $G4LEVELGAMMADATA/z36.a83. Returns true and fills five values
   // (energies in keV) on success.
   static bool parseG4PhotonEvap(const char* path, double& E_T1, double& ICC_T1,
-                                 double& Kfrac_T1, double& E_T2, double& ICC_T2);
+                                double& Kfrac_T1, double& E_T2, double& ICC_T2);
 };
 
 } // namespace o2::tpc
